@@ -17,7 +17,7 @@ Third library is selenium, for more information about this library, visit the do
 <br>
 
 Last, you need to install chromedriver. To instal chromedriver, you can follow tutorial on this site https://gist.github.com/ziadoz/3e8ab7e944d02fe872c3454d17af31a5
-<br>
+<br><br>
 <h3>Run the script</h3>
 When you have installed all of the prerequisite library, you can run the script by this command
 <pre>python3 CactiScreenshoot.py</pre>
