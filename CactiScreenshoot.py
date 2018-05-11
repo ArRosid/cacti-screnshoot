@@ -67,8 +67,8 @@ for site in daftar_site:
 		date2 = driver.find_element_by_name('date2')
 		date1.clear()
 		date2.clear()
-		date1.send_keys(tanggal_mulai)
-		date2.send_keys(tanggal_ahir)
+		date1.send_keys(start_date)
+		date2.send_keys(end_date)
 		try: #try ini artinya jika ada Refresh, kalau nda ada berarti refresh
 			driver.find_element_by_xpath("//input[@value='Refresh']").click()
 		except:
