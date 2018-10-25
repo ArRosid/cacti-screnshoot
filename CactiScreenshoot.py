@@ -83,12 +83,26 @@ for url in urls:
 	url_nya = url.split(";")[3]
 	if "http" in url_nya:
 		driver.get(url_nya)
-		screenshot = driver.save_screenshot('{}/{}a.png'.format(folder, nama_hasil))
-		img = Image.open('{}/{}a.png'.format(folder, nama_hasil))
-		img2 = img.crop((303, 206, 903, 453))#305, 208, 905, 455
-		os.remove('{}/{}a.png'.format(folder, nama_hasil))
-		img2.save('{}/{}.png'.format(folder, nama_hasil))
+		time.sleep(1) 
+		element = driver.find_element_by_class_name('graphimage')
+		location = element.location
+		size = element.size
 
+		driver.save_screenshot('{}/{}x.png'.format(folder, nama_hasil))
+		x = location['x']
+		y = location['y']
+		width = location['x']+size['width']
+		height = location['y']+size['height']
+
+		imgx = Image.open('{}/{}x.png'.format(folder, nama_hasil))
+		imgy = imgx.crop((int(x), int(y), int(width), int(height)))
+		os.remove('{}/{}x.png'.format(folder, nama_hasil))
+		imgy.save('{}/{}y.png'.format(folder, nama_hasil))
+		imgz = Image.open('{}/{}y.png'.format(folder, nama_hasil))
+		img = imgz.resize((297, 165), Image.BICUBIC) #pilihan lain bisa pake ini (NEAREST, BILINEAR, ANTIALIAS)
+		os.remove('{}/{}y.png'.format(folder, nama_hasil))
+		img.save('{}/{}.png'.format(folder, nama_hasil))
+		
 driver.quit()
 print("\n\nInput the picture to excel. Whait a minutes.......")
 
